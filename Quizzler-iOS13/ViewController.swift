@@ -26,13 +26,18 @@ class ViewController: UIViewController {
         "Three + Two is less than Ten"
     ]
     
+    var questionNumber = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-//        questionLabel.text = question.text
-        questionLabel.text = quiz.first
+        
+        updateUI()
     }
 
     @IBAction func answerButtonPressed(_ sender: UIButton) {
+        questionNumber += 1
+        updateUI()
+        
         /*
         if let answer = sender.currentTitle {
             if answer == question.answer {
@@ -42,6 +47,10 @@ class ViewController: UIViewController {
             }
         }
         */
+    }
+    
+    func updateUI() {
+        questionLabel.text = quiz[questionNumber]
     }
 }
 
