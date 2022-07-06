@@ -23,7 +23,7 @@ class ViewController: UIViewController {
     let quiz = [
         ["Four + Two is equal to Six", "True"],
         ["Five - Three is greater than One", "True"],
-        ["Three + Two is less than Ten", "False"]
+        ["Three + Two is less than Ten", "True"]
     ]
     
     var questionNumber = 0
@@ -45,18 +45,11 @@ class ViewController: UIViewController {
             print("Wrong!")
         }
         
-        questionNumber += 1
-        updateUI()
-        
-        /*
-        if let answer = sender.currentTitle {
-            if answer == question.answer {
-                questionLabel.text = question.answer
-            } else {
-                questionLabel.text = "Mistaken"
-            }
+        if questionNumber != quiz.count - 1 {
+            questionNumber += 1
         }
-        */
+        
+        updateUI()
     }
     
     func updateUI() {
