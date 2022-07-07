@@ -20,7 +20,6 @@ struct QuizBrain {
         Question(q: "What alcoholic drink is made from molasses?", a: ["Rum", "Whisky", "Gin"], correctAnswer: "Rum"),
         Question(q: "What type of animal was Harambe?", a: ["Panda", "Gorilla", "Crocodile"], correctAnswer: "Gorilla"),
         Question(q: "Where is Tasmania located?", a: ["Indonesia", "Australia", "Scotland"], correctAnswer: "Australia")
-        
     ]
     
     var questionNumber = 0
@@ -37,6 +36,10 @@ struct QuizBrain {
     
     func getQuestionText() -> String {
         return quiz[questionNumber].text
+    }
+    
+    func getAnswers() -> [String] {
+        return quiz[questionNumber].answers
     }
     
     func getProgress() -> Float{

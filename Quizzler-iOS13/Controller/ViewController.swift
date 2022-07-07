@@ -27,7 +27,7 @@ class ViewController: UIViewController {
 
     @IBAction func answerButtonPressed(_ sender: UIButton) {
         
-        let userAnswer = sender.currentTitle! // True, False
+        let userAnswer = sender.currentTitle! // Answer!
         let userGotItRight = quizBrain.checkAnswer(userAnswer)
         
         if userGotItRight {
@@ -48,8 +48,18 @@ class ViewController: UIViewController {
     @objc func updateUI() {
         progressBar.progress = quizBrain.getProgress()
         questionLabel.text = quizBrain.getQuestionText()
+        
+        let answerOne = quizBrain.getAnswers()[0]   // Possible Answer #1
+        let answerTwo = quizBrain.getAnswers()[1]   // Possible Answer #2
+        let answerThree = quizBrain.getAnswers()[2] // Possible Answer #3
+        
+        choiceOneButton.setTitle(answerOne, for: .normal)
+        choiceTwoButton.setTitle(answerTwo, for: .normal)
+        choiceThreeButton.setTitle(answerThree, for: .normal)
+        
         scoreLabel.text = "Score: \(quizBrain.getScore())"
         choiceOneButton.backgroundColor = .clear
         choiceTwoButton.backgroundColor = .clear
+        choiceThreeButton.backgroundColor = .clear
     }
 }
