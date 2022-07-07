@@ -41,10 +41,7 @@ class ViewController: UIViewController {
     @IBAction func answerButtonPressed(_ sender: UIButton) {
         
         let userAnswer = sender.currentTitle // True, False
-        let actualAnswer = quiz[questionNumber].answer
-        
-//        print(sender.backgroundColor)
-        
+        let actualAnswer = quiz[questionNumber].answer        
         
         if userAnswer == actualAnswer {
             print("Right!")
@@ -60,25 +57,15 @@ class ViewController: UIViewController {
             questionNumber = 0
         }
         
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-//            self.trueButton.backgroundColor = .clear
-//            self.falseButton.backgroundColor = .clear
-//        }
-        
         Timer.scheduledTimer(timeInterval: 0.2,
                              target: self,
-                             selector: #selector(setBackGroundBack),
+                             selector: #selector(updateUI),
                              userInfo: nil,
                              repeats: false)
-        
-        updateUI()
     }
     
-    func updateUI() {
+    @objc func updateUI() {
         questionLabel.text = quiz[questionNumber].text
-    }
-    
-    @objc func setBackGroundBack() {
         trueButton.backgroundColor = .clear
         falseButton.backgroundColor = .clear
     }
