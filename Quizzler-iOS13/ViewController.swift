@@ -43,10 +43,15 @@ class ViewController: UIViewController {
         let userAnswer = sender.currentTitle // True, False
         let actualAnswer = quiz[questionNumber].answer
         
+//        print(sender.backgroundColor)
+        
+        
         if userAnswer == actualAnswer {
             print("Right!")
+            sender.backgroundColor = .green
         } else {
             print("Wrong!")
+            sender.backgroundColor = .red
         }
         
         if questionNumber != quiz.count - 1 {
@@ -55,11 +60,27 @@ class ViewController: UIViewController {
             questionNumber = 0
         }
         
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+//            self.trueButton.backgroundColor = .clear
+//            self.falseButton.backgroundColor = .clear
+//        }
+        
+        Timer.scheduledTimer(timeInterval: 0.2,
+                             target: self,
+                             selector: #selector(setBackGroundBack),
+                             userInfo: nil,
+                             repeats: false)
+        
         updateUI()
     }
     
     func updateUI() {
         questionLabel.text = quiz[questionNumber].text
+    }
+    
+    @objc func setBackGroundBack() {
+        trueButton.backgroundColor = .clear
+        falseButton.backgroundColor = .clear
     }
 }
 
