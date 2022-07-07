@@ -27,7 +27,7 @@ struct QuizBrain {
     var score = 0
     
     mutating func checkAnswer(_ userAnswer: String) -> Bool {
-        if userAnswer == quiz[questionNumber].answer {
+        if userAnswer == quiz[questionNumber].correctAnswer {
             score += 1
             return true
         } else {
