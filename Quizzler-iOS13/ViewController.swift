@@ -41,13 +41,11 @@ class ViewController: UIViewController {
     @IBAction func answerButtonPressed(_ sender: UIButton) {
         
         let userAnswer = sender.currentTitle // True, False
-        let actualAnswer = quiz[questionNumber].answer        
+        let actualAnswer = quiz[questionNumber].answer
         
         if userAnswer == actualAnswer {
-            print("Right!")
             sender.backgroundColor = .green
         } else {
-            print("Wrong!")
             sender.backgroundColor = .red
         }
         
@@ -68,6 +66,7 @@ class ViewController: UIViewController {
         questionLabel.text = quiz[questionNumber].text
         trueButton.backgroundColor = .clear
         falseButton.backgroundColor = .clear
+        progressBar.progress = Float(questionNumber + 1) / Float(quiz.count)
     }
 }
 
